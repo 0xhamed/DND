@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container blueContainer">
+        <span class="dragable"><span>1</span></span>
+        <span class="dragable"><span>2</span></span>
+    </div>
+
+    <div class="container orangeContainer">
+        <span class="dragable"><span>3</span></span>
+        <span class="dragable"><span>4</span></span>
+        <span class="dragable"><span>5</span></span>
+    </div>
+
+
+    <script src="../DND.js"></script>
+    <script>
+        const dragableNodes = document.getElementsByClassName("dragable");
+
+        const blueContainer = document.querySelector('.blueContainer')
+        const orangeContainer = document.querySelector('.orangeContainer')
+
+        blueContainer.onElementLeft = (element) => {
+            console.log(`blueContainer: element left -> ${element}`)
+        }
+        blueContainer.onElemenEntered = (element) => {
+            console.log(`blueContainer: element entered -> ${element}`)
+        }
+
+        orangeContainer.onElementLeft = (element) => {
+            console.log(`orangeContainer: element left -> ${element}`)
+        }
+        orangeContainer.onElemenEntered = (element) => {
+            console.log(`orangeContainer: element entered -> ${element}`)
+        }
+
+        const dnd = new DND(dragableNodes, [blueContainer, orangeContainer]);
+
+        // dnd.cleanEvents()
+    </script>
+</body>
+
+</html>
